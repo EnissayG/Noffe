@@ -37,13 +37,22 @@ class _StreakPageState extends State<StreakPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(brightness: Brightness.light, primarySwatch: Colors.deepPurple) ,
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
+      
+      
       home: Scaffold(
-        backgroundColor: Colors.white,
         body: Center(
+          
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Noffe", style : Theme.of(context).textTheme.headlineLarge
+              ),
+
               Text(
                 'Streak: $jours days',
                 style: TextStyle(fontSize: 24),
@@ -66,7 +75,11 @@ class _StreakPageState extends State<StreakPage> {
                   });
                 },
                 child: Text('Reset Streak'),
-              ),
+              )
+              , BottomNavigationBar(items: const[
+                BottomNavigationBarItem(label: "Streak",icon: Icon(Icons.local_fire_department,color: Colors.orange,)),
+                BottomNavigationBarItem(label: "Profil",icon: Icon(Icons.person,color: Colors.green,))
+              ],)
             ],
           ),
         ),
